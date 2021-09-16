@@ -35,6 +35,14 @@ public class UserController {
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
 		return ResponseEntity.ok(userService.login(loginRequest));
 	}
+	@PostMapping("/login")
+	public ResponseEntity<?> authenticateUser1(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
+		return ResponseEntity.ok(userService.login(loginRequest));
+	}
+	@PostMapping("/login")
+	public ResponseEntity<?> authenticateUser2(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
+		return ResponseEntity.ok(userService.login(loginRequest));
+	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
