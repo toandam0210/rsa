@@ -78,20 +78,6 @@ public class UserServiceImpl implements UserService {
 		return new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles);
 
 	}
-	@Override
-	public JwtResponse login1(LoginRequest loginRequest) throws Exception {
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String jwt = jwtUtils.generateJwtToken(authentication);
-		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-		List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
-				.collect(Collectors.toList());
-		return new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), roles);
-
-	}
-	
-	
 
 	@Override
 	public ResponseEntity<?> signup(SignupRequest signUpRequest) {
